@@ -1,12 +1,12 @@
 import React from 'react';
 import TileCard from '../components/TileCard'; // lub inny komponent
 
-function TestPage() {
+function TestPage2() {
   return (
     <div className="p-6">
       <TileCard 
         image="/images/jazda1.jpg"
-        title="Test kafelka"
+        title="Test kafelka 2"
         description="To jest testowy kafelek."
         onClick={() => alert('Kliknięto kafelek')}
       />
@@ -14,4 +14,4 @@ function TestPage() {
   );
 }
 
-export default TestPage;
+export default TestPage2;
