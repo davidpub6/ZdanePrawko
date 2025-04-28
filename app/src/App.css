@@ -4,9 +4,9 @@
 body {
   margin: 0;
   height: 100vh;
-  display: flex;
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
   background-image: url('../img/background.png'); /* Path to your image */
   background-size: cover;
   background-position: center;

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import './App.css';
+import { useNavigate } from "react-router-dom";
+import '../App.css';
 
-function App() {
+import users from "../Data/users.json";
+
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,12 +17,22 @@ function App() {
       setError("Please fill in both fields.");
       return;
     }
-    
+
+    const user = users.find(u => u.user === username && u.pass === password);
+
+    if(user){
+      localStorage.setItem("user",JSON.stringify(user));
+      navigate("/test1");
+    }
+
+    /*
     if (username === "admin" && password === "admin") {
       alert("Login successful!");
     } else {
       setError("Invalid username or password.");
     }
+    */
+
   };
 
   return (
@@ -59,4 +73,4 @@ function App() {
   );
 }
 
-export default App;
+export default LoginPage;
