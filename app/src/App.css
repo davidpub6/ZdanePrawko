@@ -1,21 +1,30 @@
 /* App.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Set the background image for the body */
+
+/* 
+//everything has been converted to tailwind
+
+//Set the background image for the body
 body {
   margin: 0;
   height: 100vh;
-  /*display: flex;
+
+  display: flex;
   justify-content: center;
-  align-items: center;*/
-  background-image: url('../img/background.png'); /* Path to your image */
+  align-items: center;
+
+  background-image: url('../img/background.png');
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
 }
 
-/* Styling for the login container */
+//Styling for the login container
 .login-container {
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding: 30px;
   width: 300px;
@@ -68,7 +77,6 @@ button:hover {
   text-align: center;
 }
 
-/* Ensure .submit-btn is properly closed */
 .submit-btn {
   background-color: #4CAF50;
   color: white;
@@ -82,4 +90,4 @@ button:hover {
 
 .submit-btn:hover {
   background-color: #45a049;
-}
+} */

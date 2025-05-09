@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
     const menuItems = [
-        {name:"Test1", path:"/test1"},
+        {name:"Jazdy", path:"/jazdy"},
         {name:"Test2", path:"/test2"},
-        {name:"Test3", path:"/test3"},
+        {name:"Nauka", path:"/nauka"},
     ];
 
     return (

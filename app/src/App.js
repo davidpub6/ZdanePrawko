@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardLayout from './layouts/DashboardLayout';
 
 import LoginPage from './pages/LoginPage';
-import TestPage from './pages/TestPage';
+import Jazdy from './pages/Jazdy';
 import TestPage2 from './pages/TestPage2';
-import TestPage3 from './pages/TestPage3';
+import Nauka from './pages/Nauka';
 
 function App() {
     return (
@@ -15,15 +15,13 @@ function App() {
                 <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route element={<DashboardLayout />}>
-                    <Route path="/test1" element={<TestPage />} />
+                    {/*Remember to change the routes in the Sidebar component*/}
+                    <Route path="/jazdy" element={<Jazdy />} />
                     <Route path="/test2" element={<TestPage2 />} />
-                    <Route path="/test3" element={<TestPage3 />} />
+                    <Route path="/nauka" element={<Nauka />} />
                 </Route>
                 </Routes>
             </Router>
-            <div>
-            HELLO WORLD
-            </div>
         </div>
     );
 }
