@@ -8,7 +8,7 @@ function Jazdy() {
       <h1 className="text-2xl font-bold text-left mb-8">Jazdy</h1>
 
       {/* Tile Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8 p-2">
         {/* Tile Card 1 */}
         <TileCard
           image="/images/jazda1.jpg"
