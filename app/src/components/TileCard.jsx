@@ -4,7 +4,7 @@ function TileCard({ image, title, description, onClick }) {
   return (
     <div 
       onClick={onClick} 
-      className="cursor-pointer rounded-xl overflow-hidden shadow-md transition hover:scale-105 max-w-sm"
+      className="cursor-pointer rounded-xl overflow-hidden shadow-md transition hover:scale-105 flex-shrink-0"
     >
       <img src={image} alt={" "} className="w-full h-40 object-cover" />
       <div className="p-4">

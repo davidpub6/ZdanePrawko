@@ -4,6 +4,31 @@
 @tailwind utilities;
 
 
+/* Custom scrollbar styles */
+.custom-scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #444 #e0e0e0; /* For Firefox */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 20px; /* Horizontal scrollbar height */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Background of the scrollbar track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #444; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners for the thumb */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #222; /* Darker color on hover */
+}
+
+
+
 /* 
 //everything has been converted to tailwind
 

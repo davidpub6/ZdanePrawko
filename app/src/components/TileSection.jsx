@@ -8,7 +8,7 @@ function TileSection({ title, tiles }) {
       <h2 className="text-xl font-bold mb-4">{title}</h2>
 
       {/* Scrollable Tiles */}
-      <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 p-2">
+      <div className="flex gap-4 overflow-x-auto custom-scrollbar p-3 w-full">
         {tiles.map((tile, index) => (
           <TileCard
             key={index}

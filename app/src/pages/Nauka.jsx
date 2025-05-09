@@ -22,6 +22,10 @@ function Nauka() {
         { image: "/images/tile1.jpg", title: "Tile 1", description: "Opis kafelka 1", onClick: () => alert("Kliknięto Tile 1") },
         { image: "/images/tile2.jpg", title: "Tile 2", description: "Opis kafelka 2", onClick: () => alert("Kliknięto Tile 2") },
         { image: "/images/tile3.jpg", title: "Tile 3", description: "Opis kafelka 3", onClick: () => alert("Kliknięto Tile 3") },
+        { image: "/images/tile1.jpg", title: "Tile 1", description: "Opis kafelka 1", onClick: () => alert("Kliknięto Tile 1") },
+        { image: "/images/tile2.jpg", title: "Tile 2", description: "Opis kafelka 2", onClick: () => alert("Kliknięto Tile 2") },
+        { image: "/images/tile3.jpg", title: "Tile 3", description: "Opis kafelka 3", onClick: () => alert("Kliknięto Tile 3") },
+      
       ],
     },
     {
@@ -34,7 +38,7 @@ function Nauka() {
   ];
 
   return (
-    <div className="bg-gray-100 p-6">
+    <div className="bg-gray-100 p-6 ">
       {/* Page Title */}
       <h1 className="text-2xl font-bold text-left mb-8">Jazdy</h1>
       
