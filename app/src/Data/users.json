@@ -1,10 +1,14 @@
 [
     {
         "user":"admin",
-        "pass":"admin"
+        "pass":"admin",
+        "rides": []
     },
     {
         "user":"user",
-        "pass":"1234"
+        "pass":"1234",
+        "rides": [
+            { "date": "2025-05-20", "time": "10:00" }
+        ]
     }
 ]

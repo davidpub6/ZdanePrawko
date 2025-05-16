@@ -38,9 +38,9 @@ function Nauka() {
   ];
 
   return (
-    <div className="bg-gray-100 p-6 ">
+    <div className="bg-gray-100 p-6">
       {/* Page Title */}
-      <h1 className="text-2xl font-bold text-left mb-8">Jazdy</h1>
+      <h1 className="text-2xl font-bold text-left mb-8 w-full">Nauka</h1>
       
       {sections.map((section, index) => (
         <TileSection key={index} title={section.title} tiles={section.tiles} />

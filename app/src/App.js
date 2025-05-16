@@ -3,9 +3,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardLayout from './layouts/DashboardLayout';
 
-import LoginPage from './pages/LoginPage';
+import Login from './pages/Login';
 import Jazdy from './pages/Jazdy';
-import TestPage2 from './pages/TestPage2';
+import Egzamin from './pages/Egzamin';
 import Nauka from './pages/Nauka';
 
 function App() {
@@ -13,11 +13,11 @@ function App() {
         <div>
             <Router>
                 <Routes>
-                <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<Login />} />
                 <Route element={<DashboardLayout />}>
                     {/*Remember to change the routes in the Sidebar component*/}
                     <Route path="/jazdy" element={<Jazdy />} />
-                    <Route path="/test2" element={<TestPage2 />} />
+                    <Route path="/egzamin" element={<Egzamin />} />
                     <Route path="/nauka" element={<Nauka />} />
                 </Route>
                 </Routes>

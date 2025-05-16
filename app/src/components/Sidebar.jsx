@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
     const menuItems = [
         {name:"Jazdy", path:"/jazdy"},
-        {name:"Test2", path:"/test2"},
+        {name:"Egzamin", path:"/egzamin"},
         {name:"Nauka", path:"/nauka"},
     ];
 
     return (
-        <div className="h-screen w-64 bg-gray-800 text-white flex flex-col p-4">
+        <div className="h-screen w-1/12 bg-gray-800 text-white flex flex-col p-4">
             <h2 className="text-xl font-bold mb-6"> ZdanePrawko </h2>
             {menuItems.map((item) => (
                 <NavLink

@@ -4,7 +4,7 @@ import '../App.css';
 
 import users from "../Data/users.json";
 
-function LoginPage() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -77,4 +77,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Login;
