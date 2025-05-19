@@ -3,7 +3,7 @@ import TileCard from '../components/TileCard'; // lub inny komponent
 
 function Jazdy() {
   const [showModal, setShowModal] = useState(false);
-  const [rideDetails, setRideDetails] = useState({date: '', time: '', instructor: ''});
+  const [rideDetails, setRideDetails] = useState({date: '', time: ''});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +29,7 @@ function Jazdy() {
 
     localStorage.setItem('users', JSON.stringify(updatedUsers)); // Zapisz zaktualizowaną listę użytkowników
     setShowModal(false); // Zamknij modal
-    setRideDetails({ date: '', time: '', instructor: '' }); // Resetuj formularz
+    setRideDetails({ date: '', time: ''}); // Resetuj formularz
   };
 
   return (
@@ -61,7 +61,7 @@ function Jazdy() {
           <div className="bg-white p-6 rounded-lg shadow-lg w-96">
             <h2 className="text-xl font-bold mb-4">Umów jazdę</h2>
             <form>
-      <div className="mb-4">
+              <div className="mb-4">
                 <label className="block text-gray-700 mb-2">Data:</label>
                 <input
                   type="date"
@@ -101,6 +101,7 @@ function Jazdy() {
           </div>
         </div>
       )}
+
       {/* User's Scheduled Rides */}
       <div className="bg-white p-6 rounded-lg shadow-lg mt-8">
         <h2 className="text-xl font-bold mb-4">Twoje jazdy</h2>
