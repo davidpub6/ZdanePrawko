@@ -7,27 +7,27 @@ function Nauka() {
 
   const sections = [
     {
-      title: "Dział 1",
+      title: "Dział 1 : Znaki Drogowe",
       tiles: [
         {
           image: "/images/tile1.jpg",
-          title: "Tile 1",
+          title: "Znaki Ostrzegawcze",
           description: "Opis kafelka 1",
-          onClick: () => navigate('/nauka/dzial1/tile1'), // Navigate to Tile 1 page
+          onClick: () => navigate('/nauka/dzial1/ostrzegawcze') // Navigate to Tile 1 page
         },
         {
           image: "/images/tile2.jpg",
-          title: "Tile 2",
+          title: "Znaki Zakazu",
           description: "Opis kafelka 2",
-          onClick: () => navigate('/nauka/dzial1/tile2'), // Navigate to Tile 2 page
+          onClick: () => navigate('/nauka/dzial1/zakazu') // Navigate to Tile 2 page
         },
         {
           image: "/images/tile3.jpg",
-          title: "Tile 3",
+          title: "Znaki Nakazu",
           description: "Opis kafelka 3",
-          onClick: () => navigate('/nauka/dzial1/tile3'), // Navigate to Tile 3 page
-        },
-      ],
+          onClick: () => navigate('/nauka/dzial1/nakazu') // Navigate to Tile 3 page
+        }
+      ]
     },
     {
       title: "Dział 2",

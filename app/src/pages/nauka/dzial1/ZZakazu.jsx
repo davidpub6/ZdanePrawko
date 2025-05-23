@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Tile2Page() {
+function ZZakazu() {
   const navigate = useNavigate();
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold mb-6 text-blue-600">Znaki Zakazu</h1>
         <p className="text-gray-700 mb-4">
@@ -66,4 +66,4 @@ function Tile2Page() {
   );
 }
 
-export default Tile2Page;
+export default ZZakazu;
