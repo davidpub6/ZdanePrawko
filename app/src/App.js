@@ -8,9 +8,11 @@ import Jazdy from './pages/Jazdy';
 import Egzamin from './pages/Egzamin';
 import Nauka from './pages/Nauka';
 
-import Tile1Page from './pages/nauka/dzial1/Tile1'; // Import Tile 1 page
-import Tile2Page from './pages/nauka/dzial1/Tile2'; // Import Tile 2 page
-import Tile3Page from './pages/nauka/dzial1/Tile3'; // Import Tile 3 page
+import ZOstrzegawcze from './pages/nauka/dzial1/ZOstrzegawcze';
+import ZZakazu from './pages/nauka/dzial1/ZZakazu';
+import ZNakazu from './pages/nauka/dzial1/ZNakazu';
+
+import TestProbny from './pages/egzamin/Test';
 
 import NotFound from './pages/NotFound';
 
@@ -27,9 +29,12 @@ function App() {
                       <Route path="/nauka" element={<Nauka />} />
 
                       {/* Add routes for Nauka tiles */}
-                      <Route path="/nauka/dzial1/tile1" element={<Tile1Page />} />
-                      <Route path="/nauka/dzial1/tile2" element={<Tile2Page />} />
-                      <Route path="/nauka/dzial1/tile3" element={<Tile3Page />} />
+                      <Route path="/nauka/dzial1/ostrzegawcze" element={<ZOstrzegawcze />} />
+                      <Route path="/nauka/dzial1/zakazu" element={<ZZakazu />} />
+                      <Route path="/nauka/dzial1/nakazu" element={<ZNakazu />} />
+
+                      {/* Add route for Test */}
+                      <Route path="/egzamin/test" element={<TestProbny />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
                 </Routes>

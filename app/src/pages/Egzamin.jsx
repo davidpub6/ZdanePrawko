@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TileCard from '../components/TileCard'; // lub inny komponent
 
 function Egzamin() {
+  const navigate = useNavigate(); // Initialize navigation function
   const [wyniki, setWyniki] = useState([]); // State to store scores
-  // Load rides from localStorage when the component mounts
+  // Load scores from localStorage when the component mounts
     useEffect(() => {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user) {
@@ -27,7 +29,7 @@ function Egzamin() {
           image="/images/jazda1.jpg"
           title="Test"
           description="Sprawdź się"
-          onClick={() => alert('Kliknięto kafelek')}
+          onClick={() => navigate('/egzamin/test')} // Navigate to test page
         />
         </div>
 
