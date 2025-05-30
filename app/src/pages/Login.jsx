@@ -31,8 +31,8 @@ function Login() {
     }
     
     // Check if the password is correct
-    const rightPass = users.find((u) => u.pass === password);
-    if (!rightPass) {
+    const rightPass = users.find(u => u.user === username && u.pass !== password);
+    if (rightPass) {
       setError("Incorrect password. Please try again.");
       return;
     }
