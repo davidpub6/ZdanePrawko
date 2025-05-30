@@ -24,7 +24,7 @@ function Egzamin() {
           image={image1}
           title="Naucz sie"
           description="Naucz się pytań pod egzamin teoretyczny"
-          onClick={() => alert('Kliknięto kafelek')}
+          onClick={() => navigate("/egzamin/nauka")}
         />
 
         <TileCard 

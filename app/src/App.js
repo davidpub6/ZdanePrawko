@@ -15,6 +15,7 @@ import ZNakazu from './pages/nauka/dzial1/ZNakazu';
 import Przykladowe from './pages/jazdy/PrzykladoweJazdy';
 
 import TestProbny from './pages/egzamin/Test';
+import EgzaminNauka from './pages/egzamin/NauczSieQuiz';
 
 import NotFound from './pages/NotFound';
 
@@ -40,6 +41,7 @@ function App() {
 
                       {/* Add route for Test */}
                       <Route path="/egzamin/test" element={<TestProbny />} />
+                      <Route path="/egzamin/nauka" element={<EgzaminNauka />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
                 </Routes>
