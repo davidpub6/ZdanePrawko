@@ -6,7 +6,7 @@ import users from "../Data/users.json";
 
 function Login() {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(""); // Look into bcryptjs for password hashing
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
