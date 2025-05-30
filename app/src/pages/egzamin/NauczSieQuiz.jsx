@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import quizLearning from '../../Data/quizLearning.json';
 
 const NauczSieQuiz = () => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedAnswerId, setSelectedAnswerId] = useState(null);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showAnswer, setShowAnswer] = useState(false);
 
   const currentQuestion = quizLearning[currentIndex];
+  const selectedAnswerId = selectedAnswers[currentIndex] || null;
+
+  useEffect(() => {
+    if (selectedAnswers[currentIndex]) {
+      setShowAnswer(true);
+    } else {
+      setShowAnswer(false);
+    }
+  }, [currentIndex, selectedAnswers]);
 
   const handleAnswerSelect = (answerId) => {
-    setSelectedAnswerId(answerId);
+    setSelectedAnswers({
+      ...selectedAnswers,
+      [currentIndex]: answerId,
+    });
     setShowAnswer(true);
   };
 
   const handleNext = () => {
-    setSelectedAnswerId(null);
-    setShowAnswer(false);
     if (currentIndex < quizLearning.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
 
   const handlePrevious = () => {
-    setSelectedAnswerId(null);
-    setShowAnswer(false);
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     }
