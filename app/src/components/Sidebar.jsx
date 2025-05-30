@@ -2,13 +2,13 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
     const menuItems = [
-        {name:"Test1", path:"/test1"},
-        {name:"Test2", path:"/test2"},
-        {name:"Test3", path:"/test3"},
+        {name:"Jazdy", path:"/jazdy"},
+        {name:"Egzamin", path:"/egzamin"},
+        {name:"Nauka", path:"/nauka"},
     ];
 
     return (
-        <div className="h-screen w-64 bg-gray-800 text-white flex flex-col p-4">
+        <div className="h-screen w-1/12 bg-gray-800 text-white flex flex-col p-4">
             <h2 className="text-xl font-bold mb-6"> ZdanePrawko </h2>
             {menuItems.map((item) => (
                 <NavLink
