@@ -73,13 +73,13 @@ function Login() {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <div class="bg-white bg-opacity-80 rounded-lg p-8 w-72 shadow-lg">
-        <h2 class="text-center mb-5"> Login/Sign-up </h2>
+      <div className="bg-white bg-opacity-80 rounded-lg p-8 w-72 shadow-lg">
+        <h2 className="text-center mb-5"> Login/Sign-up </h2>
         <form onSubmit={handleSubmit} className="login-form">
-          <div class="mb-4">
-            <label class="font-bold block mb-1" htmlFor="username">Username</label>
+          <div className="mb-4">
+            <label className="font-bold block mb-1" htmlFor="username">Username</label>
             <input
-              class="w-full p-2 text-lg mt-1 border border-gray-300 rounded"
+              className="w-full p-2 text-lg mt-1 border border-gray-300 rounded"
               type="text"
               id="username"
               name="username"
@@ -89,10 +89,10 @@ function Login() {
             />
           </div>
           
-          <div class="mb-4">
-            <label class="font-bold block mb-1" htmlFor="password">Password</label>
+          <div className="mb-4">
+            <label className="font-bold block mb-1" htmlFor="password">Password</label>
             <input
-              class="w-full p-2 text-lg mt-1 border border-gray-300 rounded"
+              className="w-full p-2 text-lg mt-1 border border-gray-300 rounded"
               type="password"
               id="password"
               name="password"
@@ -102,11 +102,11 @@ function Login() {
             />
           </div>
           
-          {error && <p class="text-red-500 text-sm text-center">{error}</p>}
-          <button class="bg-blue-500 text-white p-2 w-full text-lg rounded hover:bg-blue-600" type="button" onClick={handleSignup}>
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          <button className="bg-blue-500 text-white p-2 w-full text-lg rounded hover:bg-blue-600 mb-2" type="button" onClick={handleSignup}>
             Sign-up
           </button>
-          <button class="bg-green-500 text-white p-2 w-full text-lg rounded hover:bg-green-600" type="submit">
+          <button className="bg-green-500 text-white p-2 w-full text-lg rounded hover:bg-green-600" type="submit">
             Login
           </button>
         </form>
