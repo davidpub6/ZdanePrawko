@@ -74,7 +74,7 @@ function Login() {
   return (
     <div className="flex items-center justify-center h-screen">
       <div class="bg-white bg-opacity-80 rounded-lg p-8 w-72 shadow-lg">
-        <h2 class="text-center mb-5"> Login </h2>
+        <h2 class="text-center mb-5"> Login/Sign-up </h2>
         <form onSubmit={handleSubmit} className="login-form">
           <div class="mb-4">
             <label class="font-bold block mb-1" htmlFor="username">Username</label>
