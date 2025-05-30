@@ -7,6 +7,7 @@ import image2 from '../images/egzamin/egzamin-teoretyczny.png';
 function Egzamin() {
   const navigate = useNavigate(); // Initialize navigation function
   const [wyniki, setWyniki] = useState([]); // State to store scores
+
   // Load scores from localStorage when the component mounts
     useEffect(() => {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -20,11 +21,12 @@ function Egzamin() {
       {/* Page Title */}
       <h1 className="text-2xl font-bold text-left mb-8">Egzamin</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8 p-2">
+        {/* Tile Cards Section */}
         <TileCard 
           image={image1}
           title="Naucz sie"
           description="Naucz się pytań pod egzamin teoretyczny"
-          onClick={() => navigate("/egzamin/nauka")}
+          onClick={() => navigate("/egzamin/nauka")} // Navigate to the learning page
         />
 
         <TileCard 

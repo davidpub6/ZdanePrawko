@@ -75,8 +75,10 @@ function Login() {
     <div className="flex items-center justify-center h-screen">
       <div class="bg-white bg-opacity-80 rounded-lg p-8 w-72 shadow-lg">
         <h2 class="text-center mb-5"> Login/Sign-up </h2>
+        {/* Login Form */}
         <form onSubmit={handleSubmit} className="login-form">
           <div class="mb-4">
+            {/* Username Input */}
             <label class="font-bold block mb-1" htmlFor="username">Username</label>
             <input
               class="w-full p-2 text-lg mt-1 border border-gray-300 rounded"
@@ -90,6 +92,7 @@ function Login() {
           </div>
           
           <div class="mb-4">
+            {/* Password Input */}
             <label class="font-bold block mb-1" htmlFor="password">Password</label>
             <input
               class="w-full p-2 text-lg mt-1 border border-gray-300 rounded"
@@ -102,7 +105,10 @@ function Login() {
             />
           </div>
           
+          {/* Error Message */}
           {error && <p class="text-red-500 text-sm text-center">{error}</p>}
+          
+          {/* Buttons for Login and Sign-up */}
           <button class="bg-blue-500 text-white p-2 w-full text-lg rounded hover:bg-blue-600" type="button" onClick={handleSignup}>
             Sign-up
           </button>
