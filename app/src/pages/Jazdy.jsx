@@ -7,7 +7,7 @@ function Jazdy() {
 
   const [showModal, setShowModal] = useState(false);
   const [rideDetails, setRideDetails] = useState({date: '', time: ''});
-  const [rides, setRides] = useState([]); // State to store rides
+  const [rides, setRides] = useState([]);
 
   // Load rides from localStorage when the component mounts
   useEffect(() => {
@@ -95,6 +95,7 @@ function Jazdy() {
             <h2 className="text-xl font-bold mb-4">Umów jazdę</h2>
             <form>
               <div className="mb-4">
+                {/* Date input for ride date */}
                 <label className="block text-gray-700 mb-2">Data:</label>
                 <input
                   type="date"
@@ -105,6 +106,7 @@ function Jazdy() {
                 />
               </div>
               <div className="mb-4">
+                {/* Time input for ride time */}
                 <label className="block text-gray-700 mb-2">Godzina:</label>
                 <input
                   type="time"
@@ -115,6 +117,7 @@ function Jazdy() {
                 />
               </div>
               <div className="flex justify-end">
+                {/* Cancel and Save buttons */}
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
