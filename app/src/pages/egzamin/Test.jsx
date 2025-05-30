@@ -14,11 +14,19 @@ function shuffleArray(array) {
 
 function TestProbny() {
   const navigate = useNavigate();
-
   const [quizData, setQuizData] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  const [wyniki, setWynik] = useState([]); // State to store scores
+
+  // Load rides from localStorage when the component mounts
+    useEffect(() => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        setWynik(user.wyniki || []);
+      }
+    }, []);
 
   useEffect(() => {
     setQuizData(shuffleArray(quizDataOriginal));
@@ -39,7 +47,6 @@ function TestProbny() {
     if (selectedAnswer === correctAnswerValue) {
       setScore(score + 1);
     }
-
     if (currentQuestionIndex + 1 < quizData.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -47,8 +54,23 @@ function TestProbny() {
     }
   };
 
+  const handleSaveWynik = () => {
+    const user = JSON.parse(localStorage.getItem('user')); //zalogowany user
+    if (!user) {
+      console.error('Brak zalogowanego użytkownika!');
+      return;
+    }
+    // Add the new score
+    const updatedWyniki = [...wyniki, {date: new Date().toLocaleDateString(), wynik: score + "/" + quizData.length}];
+    const updatedUser = { ...user, wyniki: updatedWyniki };
+    // Save the updated user to localStorage
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+    setWynik(updatedWyniki); // Update the state
+  };
+
   const handleReset = () => {
     setQuizData(shuffleArray(quizDataOriginal));
+    handleSaveWynik(); // Save the score before resetting
     setCurrentQuestionIndex(0);
     setScore(0);
     setShowResults(false);
@@ -80,7 +102,10 @@ function TestProbny() {
 
           <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => navigate('/egzamin')}
+              onClick={() => {
+                handleSaveWynik();
+                navigate('/egzamin');
+              }}
             >
               Powrót do egzaminu
           </button>

@@ -10,22 +10,66 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // Function to handle user login
   const handleSubmit = (event) => {
     event.preventDefault();
     
+    // Reset the error message
+    setError("");
+
+    // Check if username and password are provided
     if (username === "" || password === "") {
       setError("Please fill in both fields.");
       return;
     }
 
-    const user = users.find(u => u.user === username && u.pass === password);
+    // Check if the user exists
+    const userExist = users.find((u) => u.user === username);
+    if (!userExist) {
+      setError("User does not exist. Please sign up first.");
+      return;
+    }
+    
+    // Check if the password is correct
+    const rightPass = users.find((u) => u.pass === password);
+    if (!rightPass) {
+      setError("Incorrect password. Please try again.");
+      return;
+    }
 
+    // Check if the user exists and the password matches
+    const user = users.find(u => u.user === username && u.pass === password);
     if(user){
       localStorage.setItem("user",JSON.stringify(user));
       navigate("/jazdy");
     }
-
   };
+  
+  // Function to handle user signup
+  const handleSignup = (event) => {
+      event.preventDefault();
+      setError(""); // Reset the error message on signup attempt
+
+      // Check if username and password are provided
+      if (username === "" || password === "") {
+        setError("Please fill in both fields.");
+        return;
+      }
+    
+      // Check if the user already exists
+      const userExists = users.find((u) => u.user === username);
+      if (userExists) {
+        setError("User already exists. Please choose a different username.");
+        return;
+      }
+      
+      // Create a new user and save it to localStorage
+      const newUser = { user: username, pass: password, rides: [], wyniki: [] };
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+      setError("");
+      alert("Signup successful! You can now log in.");
+    };
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -59,7 +103,9 @@ function Login() {
           </div>
           
           {error && <p class="text-red-500 text-sm text-center">{error}</p>}
-          
+          <button class="bg-blue-500 text-white p-2 w-full text-lg rounded hover:bg-blue-600" type="button" onClick={handleSignup}>
+            Sign-up
+          </button>
           <button class="bg-green-500 text-white p-2 w-full text-lg rounded hover:bg-green-600" type="submit">
             Login
           </button>

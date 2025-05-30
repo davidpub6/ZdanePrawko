@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+    // A list of menu/nav items for the sidebar
     const menuItems = [
         {name:"Jazdy", path:"/jazdy"},
         {name:"Egzamin", path:"/egzamin"},
@@ -11,6 +12,7 @@ const Sidebar = () => {
         <div className="h-screen w-1/12 bg-gray-800 text-white flex flex-col p-4">
             <h2 className="text-xl font-bold mb-6"> ZdanePrawko </h2>
             {menuItems.map((item) => (
+                // Create a NavLink for each menu item
                 <NavLink
                     key={item.path}
                     to={item.path}

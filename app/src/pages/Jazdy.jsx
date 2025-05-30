@@ -17,6 +17,7 @@ function Jazdy() {
     }
   }, []);
 
+  // Handle input changes for the ride form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setRideDetails((prevDetails) => ({
@@ -25,10 +26,17 @@ function Jazdy() {
     }));
   }
 
+  // Function to handle saving a new ride
   const handleSaveRide = () => {
     const user = JSON.parse(localStorage.getItem('user')); //zalogowany user
     if (!user) {
       console.error('Brak zalogowanego użytkownika!');
+      return;
+    }
+
+    // Validate ride details
+    if (!rideDetails.date || !rideDetails.time) {
+      alert('Proszę wprowadzić datę i godzinę jazdy.');
       return;
     }
 
@@ -43,6 +51,7 @@ function Jazdy() {
     setRideDetails({ date: '', time: '' }); // Reset the form
   };
 
+  // Function to cancel a ride
   const cancelRide = (index) => {
     const user = JSON.parse(localStorage.getItem('user')); // Pobierz zalogowanego użytkownika
 
