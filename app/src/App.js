@@ -3,17 +3,21 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardLayout from './layouts/DashboardLayout';
 
+// Main pages
 import Login from './pages/Login';
 import Jazdy from './pages/Jazdy';
 import Egzamin from './pages/Egzamin';
 import Nauka from './pages/Nauka';
 
+// Nauka sub-pages
 import ZOstrzegawcze from './pages/nauka/dzial1/ZOstrzegawcze';
 import ZZakazu from './pages/nauka/dzial1/ZZakazu';
 import ZNakazu from './pages/nauka/dzial1/ZNakazu';
 
+// Egzamin sub-pages (just the test page)
 import TestProbny from './pages/egzamin/Test';
 
+// NotFound page for handling 404 errors
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -36,6 +40,7 @@ function App() {
                       {/* Add route for Test */}
                       <Route path="/egzamin/test" element={<TestProbny />} />
                     </Route>
+                    {/* Catch-all route for 404 Not Found */}
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Router>

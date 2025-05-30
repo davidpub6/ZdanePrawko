@@ -10,6 +10,7 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // Function to handle user login
   const handleSubmit = (event) => {
     event.preventDefault();
     
@@ -44,6 +45,7 @@ function Login() {
     }
   };
   
+  // Function to handle user signup
   const handleSignup = (event) => {
       event.preventDefault();
       setError(""); // Reset the error message on signup attempt

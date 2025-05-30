@@ -1,27 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// User gets deleted after logout because the login page updates the localStorage
+// with data from users.json, which does not include the logged-out user.
+
 const Header = () => {
     const navigate = useNavigate(); // Initialize navigation function
     const user = JSON.parse(localStorage.getItem("user"));
 
     const handleLogout = () => {
         // Retrieve the users array from localStorage
-
         const users = JSON.parse(localStorage.getItem("users")) || [];
-    
-        // Update the users array (if needed)
-        const updatedUsers = users.map((u) => {
-            if (u.user === user.user) {
-                // Example: Update user-specific data before logout
-                return { ...u, lastLogout: new Date().toISOString() }; // Add a lastLogout timestamp
-            }
-            return u;
-        });
-    
-        // Save the updated users array back to localStorage
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-    
+
         // Remove the current user from localStorage
         localStorage.removeItem("user");
     
