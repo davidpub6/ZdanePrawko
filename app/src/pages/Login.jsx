@@ -109,7 +109,7 @@ function Login() {
           {error && <p class="text-red-500 text-sm text-center">{error}</p>}
           
           {/* Buttons for Login and Sign-up */}
-          <button class="bg-blue-500 text-white p-2 w-full text-lg rounded hover:bg-blue-600" type="button" onClick={handleSignup}>
+          <button class="bg-blue-500 text-white p-2 w-full text-lg rounded hover:bg-blue-600 mb-2" type="button" onClick={handleSignup}>
             Sign-up
           </button>
           <button class="bg-green-500 text-white p-2 w-full text-lg rounded hover:bg-green-600" type="submit">
