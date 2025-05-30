@@ -10,39 +10,39 @@ function Nauka() {
       title: "Dział 1 : Znaki Drogowe",
       tiles: [
         {
-          image: "/images/tile1.jpg",
-          title: "Znaki Ostrzegawcze",
-          description: "Opis kafelka 1",
+          image: "https://picsum.photos/200/300?random=1",
+          title: "Znaki Ostrzegawcze...",
+          description: "Naucz sie znakow ostrzegawczych",
           onClick: () => navigate('/nauka/dzial1/ostrzegawcze') // Navigate to Tile 1 page
         },
         {
-          image: "/images/tile2.jpg",
+          image: "https://picsum.photos/200/300?random=2",
           title: "Znaki Zakazu",
-          description: "Opis kafelka 2",
+          description: "Naucz sie znakow zakazu...",
           onClick: () => navigate('/nauka/dzial1/zakazu') // Navigate to Tile 2 page
         },
         {
-          image: "/images/tile3.jpg",
+          image: "https://picsum.photos/200/300?random=3",
           title: "Znaki Nakazu",
-          description: "Opis kafelka 3",
+          description: "Naucz sie znakow nakazu...",
           onClick: () => navigate('/nauka/dzial1/nakazu') // Navigate to Tile 3 page
         }
       ]
     },
     {
-      title: "Dział 2",
+      title: "Dział 2: Zasady Ogólne",
       tiles: [
         {
-          image: "/images/tile4.jpg",
-          title: "Tile 4",
-          description: "Opis kafelka 4",
-          onClick: () => navigate('/dzial2/tile4'), // Navigate to Tile 4 page
+          image: "https://picsum.photos/200/300?random=4",
+          title: "Zasady Ogólne 1",
+          description: "Podstawowe zasady...",
+          onClick: () => navigate('/nauka/dzial2/zasady-1'), // Navigate to Tile 4 page
         },
         {
-          image: "/images/tile5.jpg",
-          title: "Tile 5",
-          description: "Opis kafelka 5",
-          onClick: () => navigate('/dzial2/tile5'), // Navigate to Tile 5 page
+          image: "https://picsum.photos/200/300?random=5",
+          title: "Zasady Ogólne 2",
+          description: "Zachowanie na skrzyżowaniach...",
+          onClick: () => navigate('/nauka/dzial2/zasady-2'), // Navigate to Tile 5 page
         },
       ],
     },

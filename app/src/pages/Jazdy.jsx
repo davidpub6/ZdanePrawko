@@ -64,7 +64,7 @@ function Jazdy() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8 p-2">
         {/* Tile Card 1 */}
         <TileCard
-          image="/images/jazda1.jpg"
+          image="https://picsum.photos/700/300?random=1"
           title="Przykładowe jazdy"
           description="Zobacz przykładowe jazdy."
           onClick={() => navigate("/jazdy/przykladowe")}
@@ -72,7 +72,7 @@ function Jazdy() {
 
         {/* Tile Card 2 */}
         <TileCard
-          image="/images/jazda2.jpg"
+          image="https://picsum.photos/700/300?random=2"
           title="Umów jazdę"
           description="Umów się na jazdę z instruktorem."
           onClick={() => setShowModal(true)}
