@@ -1,0 +1,218 @@
+[
+  {
+    "id": 3,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c3.png",
+    "answers": [
+      { "id": "a", "text": "Zakaz wjazdu" },
+      { "id": "b", "text": "Droga dla rowerów" },
+      { "id": "c", "text": "Droga z pierwszeństwem" },
+      { "id": "d", "text": "Koniec drogi" }
+    ],
+    "correctAnswerId": "c"
+  },
+  {
+    "id": 4,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c4.png",
+    "answers": [
+      { "id": "a", "text": "Przejazd kolejowy" },
+      { "id": "b", "text": "Przejście dla pieszych" },
+      { "id": "c", "text": "Znak stop" },
+      { "id": "d", "text": "Znak ustąp pierwszeństwa" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 5,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c5.png",
+    "answers": [
+      { "id": "a", "text": "Droga z pierwszeństwem" },
+      { "id": "b", "text": "Koniec strefy zamieszkania" },
+      { "id": "c", "text": "Zakaz wjazdu dla pojazdów ciężarowych" },
+      { "id": "d", "text": "Droga jednokierunkowa" }
+    ],
+    "correctAnswerId": "b"
+  },
+  {
+    "id": 6,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c6.png",
+    "answers": [
+      { "id": "a", "text": "Znak ustąp pierwszeństwa" },
+      { "id": "b", "text": "Znak stop" },
+      { "id": "c", "text": "Przejazd kolejowy" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "d"
+  },
+  {
+    "id": 7,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c7.png",
+    "answers": [
+      { "id": "a", "text": "Zakaz wjazdu" },
+      { "id": "b", "text": "Droga dla pieszych" },
+      { "id": "c", "text": "Koniec drogi" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 8,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c8.png",
+    "answers": [
+      { "id": "a", "text": "Przejście dla pieszych" },
+      { "id": "b", "text": "Droga z pierwszeństwem" },
+      { "id": "c", "text": "Znak stop" },
+      { "id": "d", "text": "Koniec strefy zamieszkania" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 9,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c9.png",
+    "answers": [
+      { "id": "a", "text": "Droga dla rowerów" },
+      { "id": "b", "text": "Zakaz wjazdu" },
+      { "id": "c", "text": "Koniec drogi" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 10,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c10.png",
+    "answers": [
+      { "id": "a", "text": "Zakaz wjazdu dla pojazdów ciężarowych" },
+      { "id": "b", "text": "Droga z pierwszeństwem" },
+      { "id": "c", "text": "Koniec strefy zamieszkania" },
+      { "id": "d", "text": "Przejazd kolejowy" }
+    ],
+    "correctAnswerId": "c"
+  },
+  {
+    "id": 11,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c11.png",
+    "answers": [
+      { "id": "a", "text": "Droga jednokierunkowa" },
+      { "id": "b", "text": "Koniec drogi" },
+      { "id": "c", "text": "Znak stop" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 12,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c12.png",
+    "answers": [
+      { "id": "a", "text": "Przejazd kolejowy" },
+      { "id": "b", "text": "Droga dla pieszych" },
+      { "id": "c", "text": "Zakaz skrętu w lewo" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "c"
+  },
+  {
+    "id": 13,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c13.png",
+    "answers": [
+      { "id": "a", "text": "Koniec strefy zamieszkania" },
+      { "id": "b", "text": "Droga z pierwszeństwem" },
+      { "id": "c", "text": "Zakaz wjazdu" },
+      { "id": "d", "text": "Droga jednokierunkowa" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 14,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c14.png",
+    "answers": [
+      { "id": "a", "text": "Droga dla rowerów" },
+      { "id": "b", "text": "Zakaz wjazdu dla pojazdów ciężarowych" },
+      { "id": "c", "text": "Przejazd kolejowy" },
+      { "id": "d", "text": "Znak stop" }
+    ],
+    "correctAnswerId": "b"
+  },
+  {
+    "id": 15,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c15.png",
+    "answers": [
+      { "id": "a", "text": "Droga z pierwszeństwem" },
+      { "id": "b", "text": "Koniec drogi" },
+      { "id": "c", "text": "Przejazd kolejowy" },
+      { "id": "d", "text": "Droga jednokierunkowa" }
+    ],
+    "correctAnswerId": "d"
+  },
+  {
+    "id": 16,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c16.png",
+    "answers": [
+      { "id": "a", "text": "Zakaz wjazdu" },
+      { "id": "b", "text": "Droga dla pieszych" },
+      { "id": "c", "text": "Koniec strefy zamieszkania" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "b"
+  },
+  {
+    "id": 17,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c17.png",
+    "answers": [
+      { "id": "a", "text": "Droga jednokierunkowa" },
+      { "id": "b", "text": "Zakaz skrętu w prawo" },
+      { "id": "c", "text": "Koniec drogi" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "a"
+  },
+  {
+    "id": 18,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c18.png",
+    "answers": [
+      { "id": "a", "text": "Przejazd kolejowy" },
+      { "id": "b", "text": "Droga dla rowerów" },
+      { "id": "c", "text": "Zakaz wjazdu" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "c"
+  },
+  {
+    "id": 19,
+    "question": "Co oznacza ten znak drogowy?",
+    "image": "/images/znaki/c19.png",
+    "answers": [
+      { "id": "a", "text": "Koniec strefy zamieszkania" },
+      { "id": "b", "text": "Droga z pierwszeństwem" },
+      { "id": "c", "text": "Zakaz wjazdu dla pojazdów ciężarowych" },
+      { "id": "d", "text": "Droga jednokierunkowa" }
+    ],
+    "correctAnswerId": "b"
+  },
+  {
+    "id": 20,
+    "question": "Co oznacza ten znak?",
+    "image": "/images/znaki/c20.png",
+    "answers": [
+      { "id": "a", "text": "Droga dla pieszych" },
+      { "id": "b", "text": "Zakaz skrętu w lewo" },
+      { "id": "c", "text": "Koniec drogi" },
+      { "id": "d", "text": "Droga z pierwszeństwem" }
+    ],
+    "correctAnswerId": "d"
+  }
+]
