@@ -48,7 +48,7 @@ function ZZakazu() {
 
         {/* Previous Tile */}
         <button
-          onClick={() => navigate('/nauka/dzial1/tile1')}
+          onClick={() => navigate('/nauka/dzial1/ostrzegawcze')}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Poprzedni
@@ -56,7 +56,7 @@ function ZZakazu() {
 
         {/* Next Tile */}
         <button
-          onClick={() => navigate('/nauka/dzial1/tile3')}
+          onClick={() => navigate('/nauka/dzial1/nakazu')}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Następny

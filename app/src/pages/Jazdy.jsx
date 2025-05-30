@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TileCard from '../components/TileCard';
 
 function Jazdy() {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
   const [rideDetails, setRideDetails] = useState({date: '', time: ''});
   const [rides, setRides] = useState([]); // State to store rides
@@ -14,6 +17,7 @@ function Jazdy() {
     }
   }, []);
 
+  // Handle input changes for the ride form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setRideDetails((prevDetails) => ({
@@ -22,10 +26,17 @@ function Jazdy() {
     }));
   }
 
+  // Function to handle saving a new ride
   const handleSaveRide = () => {
     const user = JSON.parse(localStorage.getItem('user')); //zalogowany user
     if (!user) {
       console.error('Brak zalogowanego użytkownika!');
+      return;
+    }
+
+    // Validate ride details
+    if (!rideDetails.date || !rideDetails.time) {
+      alert('Proszę wprowadzić datę i godzinę jazdy.');
       return;
     }
 
@@ -40,6 +51,7 @@ function Jazdy() {
     setRideDetails({ date: '', time: '' }); // Reset the form
   };
 
+  // Function to cancel a ride
   const cancelRide = (index) => {
     const user = JSON.parse(localStorage.getItem('user')); // Pobierz zalogowanego użytkownika
 
@@ -61,15 +73,15 @@ function Jazdy() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8 p-2">
         {/* Tile Card 1 */}
         <TileCard
-          image="/images/jazda1.jpg"
+          image="https://picsum.photos/700/300?random=1"
           title="Przykładowe jazdy"
           description="Zobacz przykładowe jazdy."
-          onClick={() => alert('Kliknięto kafelek Przykładowe jazdy')}
+          onClick={() => navigate("/jazdy/przykladowe")}
         />
 
         {/* Tile Card 2 */}
         <TileCard
-          image="/images/jazda2.jpg"
+          image="https://picsum.photos/700/300?random=2"
           title="Umów jazdę"
           description="Umów się na jazdę z instruktorem."
           onClick={() => setShowModal(true)}

@@ -1,0 +1,42 @@
+[
+    {
+        "question": "Co oznacza znak drogowy z literą 'P' na niebieskim tle?",
+        "a": "Parking",
+        "b": "Przejście dla pieszych",
+        "c": "Przystanek autobusowy",
+        "d": "Postój taksówek",
+        "answer": "a"
+    },
+    {
+        "question": "Jakie jest ograniczenie prędkości w terenie zabudowanym w Polsce?",
+        "a": "50 km/h",
+        "b": "60 km/h",
+        "c": "70 km/h",
+        "d": "80 km/h",
+        "answer": "a"
+    },
+    {
+        "question": "Co należy zrobić, gdy widzisz znak STOP?",
+        "a": "Zwolnić i upewnić się, że droga jest wolna",
+        "b": "Zatrzymać się całkowicie",
+        "c": "Zatrąbić i przejechać",
+        "d": "Nic, jeśli droga jest wolna",
+        "answer": "b"
+    },
+    {
+        "question": "Jakie światła należy włączyć podczas jazdy w tunelu?",
+        "a": "Światła mijania",
+        "b": "Światła drogowe",
+        "c": "Światła awaryjne",
+        "d": "Światła pozycyjne",
+        "answer": "a"
+    },
+    {
+        "question": "Co oznacza żółte światło na sygnalizatorze?",
+        "a": "Przygotowanie do zatrzymania",
+        "b": "Można jechać szybciej",
+        "c": "Zatrzymać się natychmiast",
+        "d": "Nie ma znaczenia",
+        "answer": "a"
+    }
+]
