@@ -12,6 +12,8 @@ import ZOstrzegawcze from './pages/nauka/dzial1/ZOstrzegawcze';
 import ZZakazu from './pages/nauka/dzial1/ZZakazu';
 import ZNakazu from './pages/nauka/dzial1/ZNakazu';
 
+import Przykladowe from './pages/jazdy/PrzykladoweJazdy';
+
 import TestProbny from './pages/egzamin/Test';
 
 import NotFound from './pages/NotFound';
@@ -32,6 +34,9 @@ function App() {
                       <Route path="/nauka/dzial1/ostrzegawcze" element={<ZOstrzegawcze />} />
                       <Route path="/nauka/dzial1/zakazu" element={<ZZakazu />} />
                       <Route path="/nauka/dzial1/nakazu" element={<ZNakazu />} />
+
+                      {/* Add routes for Jazdy tiles */}
+                      <Route path="/jazdy/przykladowe" element={<Przykladowe />} />
 
                       {/* Add route for Test */}
                       <Route path="/egzamin/test" element={<TestProbny />} />

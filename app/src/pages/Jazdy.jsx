@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TileCard from '../components/TileCard';
 
 function Jazdy() {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
   const [rideDetails, setRideDetails] = useState({date: '', time: ''});
   const [rides, setRides] = useState([]); // State to store rides
@@ -64,7 +67,7 @@ function Jazdy() {
           image="/images/jazda1.jpg"
           title="Przykładowe jazdy"
           description="Zobacz przykładowe jazdy."
-          onClick={() => alert('Kliknięto kafelek Przykładowe jazdy')}
+          onClick={() => navigate("/jazdy/przykladowe")}
         />
 
         {/* Tile Card 2 */}

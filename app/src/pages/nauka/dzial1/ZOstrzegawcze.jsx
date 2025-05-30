@@ -48,7 +48,7 @@ function ZOstrzegawcze() {
 
         {/* Previous Tile */}
         <button
-          onClick={() => navigate('/nauka/dzial1/tile0')} // Replace with the actual previous tile route if it exists
+          // onClick={() => navigate('/nauka/dzial1/ZNakazu')} // Replace with the actual previous tile route if it exists
           className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:bg-gray-200 disabled:text-gray-500"
           disabled={true} // Disable if there is no previous tile
         >
@@ -57,7 +57,7 @@ function ZOstrzegawcze() {
 
         {/* Next Tile */}
         <button
-          onClick={() => navigate('/nauka/dzial1/tile2')} // Replace with the actual next tile route if it exists
+          onClick={() => navigate('/nauka/dzial1/zakazu')} // Replace with the actual next tile route if it exists
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-500"
         >
           Następny

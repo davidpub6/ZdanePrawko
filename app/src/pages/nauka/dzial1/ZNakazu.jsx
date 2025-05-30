@@ -48,7 +48,7 @@ function ZNakazu() {
 
         {/* Previous Tile */}
         <button
-          onClick={() => navigate('/nauka/dzial1/tile2')}
+          onClick={() => navigate('/nauka/dzial1/zakazu')}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Poprzedni
