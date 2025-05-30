@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Question from "../../components/Question";
 import { useNavigate } from 'react-router-dom';
-import quizData from "../../Data/quiz.json";
+import quizDataOriginal from "../../Data/quiz.json";
+
+function shuffleArray(array) {
+  const newArray = array.slice();
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
 
 function TestProbny() {
   const navigate = useNavigate();
 
+  const [quizData, setQuizData] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
 
+  useEffect(() => {
+    setQuizData(shuffleArray(quizDataOriginal));
+  }, []);
+
   const currentQuestion = quizData[currentQuestionIndex];
 
-  // Map the correct answer letter to its actual value
-  const correctAnswerValue = currentQuestion[currentQuestion.answer];
+  const options = currentQuestion ? shuffleArray([
+    { key: 'a', value: currentQuestion.a },
+    { key: 'b', value: currentQuestion.b },
+    { key: 'c', value: currentQuestion.c },
+    { key: 'd', value: currentQuestion.d },
+  ]) : [];
+
+  const correctAnswerValue = currentQuestion ? currentQuestion[currentQuestion.answer] : null;
 
   const handleAnswer = (selectedAnswer) => {
     if (selectedAnswer === correctAnswerValue) {
@@ -28,6 +48,7 @@ function TestProbny() {
   };
 
   const handleReset = () => {
+    setQuizData(shuffleArray(quizDataOriginal));
     setCurrentQuestionIndex(0);
     setScore(0);
     setShowResults(false);
@@ -36,10 +57,10 @@ function TestProbny() {
   return (
     <div className="bg-gray-100 p-6 min-h-screen">
       <h1 className="text-2xl font-bold text-left mb-8">Egzamin</h1>
-      {!showResults ? (
+      {!showResults && currentQuestion ? (
         <Question
           question={currentQuestion.question}
-          options={[currentQuestion.a, currentQuestion.b, currentQuestion.c, currentQuestion.d]}
+          options={options.map(option => option.value)}
           onAnswer={handleAnswer}
           correctAnswer={correctAnswerValue}
         />
