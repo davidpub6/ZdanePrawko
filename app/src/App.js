@@ -28,6 +28,9 @@ import EgzaminNauka from './pages/egzamin/NauczSieQuiz';
 // NotFound page for handling 404 errors
 import NotFound from './pages/NotFound';
 
+// Admin page
+import Admin from './pages/Admin';
+
 function App() {
     return (
         <div>
@@ -54,6 +57,9 @@ function App() {
                       {/* Add route for Test */}
                       <Route path="/egzamin/test" element={<TestProbny />} />
                       <Route path="/egzamin/nauka" element={<EgzaminNauka />} />
+
+                        {/* Admin page */}
+                        <Route path="/admin" element={<Admin />} />
                     </Route>
                     {/* Catch-all route for 404 Not Found */}
                     <Route path="*" element={<NotFound />} />

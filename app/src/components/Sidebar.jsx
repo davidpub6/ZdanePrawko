@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+    const u = JSON.parse(localStorage.getItem('user'));
     // A list of menu/nav items for the sidebar
     const menuItems = [
         {name:"Jazdy", path:"/jazdy"},
         {name:"Egzamin", path:"/egzamin"},
         {name:"Nauka", path:"/nauka"},
     ];
+    if (u.user === 'admin') {
+        menuItems.push({name:"Admin", path:"/admin"});
+    }
 
     return (
         <div className="h-screen w-1/12 bg-gray-800 text-white flex flex-col p-4">
