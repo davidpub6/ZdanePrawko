@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../App.css';
+import bcrypt from "bcryptjs-react";
 
 import users from "../Data/users.json";
+import salt from "../Data/salt.json";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -10,9 +12,44 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const validatePass = (pass) => {
+    //const errorMesage = "Password must ";
+    let errorMesage = "Password must ";
+    const notFour = "be at least 4 characters long";
+    const noUpper = "contain 1 uppercase letter";
+    const noNumber = "contain 1 number";
+
+    const hasUpperCase = /[A-Z]/.test(pass);
+    const hasNumber = /\d/.test(pass);
+    const isLongEnough = pass.length >= 4;
+
+    if (!isLongEnough || !hasUpperCase || !hasNumber) {
+      let errorLength = 0;
+      if (!isLongEnough) { 
+        errorMesage += notFour;
+        errorLength++; // Increment error length for each condition not met
+      }
+      if (!hasUpperCase) { 
+        if (errorLength > 0) errorMesage += ",";
+        errorMesage += " "+noUpper;
+        errorLength++;
+      }
+      if (!hasNumber) { 
+        if (errorLength > 0) errorMesage += ",";
+        errorMesage += " "+noNumber;
+      }
+      setError(errorMesage);
+      return false;
+    }
+    return true;
+  }
+
   // Function to handle user login
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Hash the password before storing it in the database
+    const hashedPass = bcrypt.hashSync(password, salt);
     
     // Reset the error message
     setError("");
@@ -21,27 +58,31 @@ function Login() {
     if (username === "" || password === "") {
       setError("Please fill in both fields.");
       return;
-    }
+    } else {
 
-    // Check if the user exists
-    const userExist = users.find((u) => u.user === username);
-    if (!userExist) {
-      setError("User does not exist. Please sign up first.");
-      return;
-    }
-    
-    // Check if the password is correct
-    const rightPass = users.find(u => u.user === username && u.pass !== password);
-    if (rightPass) {
-      setError("Incorrect password. Please try again.");
-      return;
-    }
-
-    // Check if the user exists and the password matches
-    const user = users.find(u => u.user === username && u.pass === password);
-    if(user){
-      localStorage.setItem("user",JSON.stringify(user));
-      navigate("/jazdy");
+      // Check if the user exists
+      const userExist = users.find((u) => u.user === username);
+      if (!userExist) {
+        setError("User does not exist. Please sign up first.");
+        return;
+      } else {
+        
+        // Check if the password is correct
+        const rightPass = users.find(u => u.user === username && u.pass !== hashedPass);
+        if (rightPass) {
+          setError("Incorrect password. Please try again.");
+          return;
+        } else {
+          // Check if the user exists and the password matches
+          const user = users.find(u => u.user === username && u.pass === hashedPass);
+          if(user){
+            localStorage.setItem("user",JSON.stringify(user));
+            navigate("/jazdy");
+          } else {
+            setError("Wystąpił błąd");
+          }
+        }
+      }
     }
   };
   
@@ -50,25 +91,49 @@ function Login() {
       event.preventDefault();
       setError(""); // Reset the error message on signup attempt
 
+      const hashedPass = bcrypt.hashSync(password, salt);
+
       // Check if username and password are provided
       if (username === "" || password === "") {
         setError("Please fill in both fields.");
         return;
-      }
-    
-      // Check if the user already exists
-      const userExists = users.find((u) => u.user === username);
-      if (userExists) {
-        setError("User already exists. Please choose a different username.");
-        return;
-      }
+      } else {
       
-      // Create a new user and save it to localStorage
-      const newUser = { user: username, pass: password, rides: [], wyniki: [] };
-      users.push(newUser);
-      localStorage.setItem("users", JSON.stringify(users));
-      setError("");
-      alert("Signup successful! You can now log in.");
+        // Check if the user already exists
+        const userExists = users.find((u) => u.user === username);
+        if (userExists) {
+
+          setError("User already exists. Please choose a different username.");
+          return;
+
+        } else if (username.length < 3) {
+
+          setError("Username must be at least 3 characters long.");
+          return; // If username validation fails, exit the function
+
+        } else {
+
+          // validate password
+          if (validatePass(password)) {
+
+            // Create a new user and save it to localStorage
+            const newUser = { user: username, pass: hashedPass, rides: [], wyniki: [] };
+            users.push(newUser);
+            localStorage.setItem("users", JSON.stringify(users));
+            setError("");
+            alert("Signup successful! You can now log in.");
+
+            const user = users.find(u => u.user === username && u.pass === hashedPass);
+            if(user){
+              localStorage.setItem("user",JSON.stringify(user));
+              navigate("/jazdy");
+            }
+
+          } else {
+            return; // If password validation fails, exit the function
+          }
+        }
+      }
     };
 
   return (
