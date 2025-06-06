@@ -1,12 +1,14 @@
 [
     {
         "user":"admin",
+        "email": "admin@example.com",
         "pass":"$2a$10$Wh.IWZqupxLhSVtSaLaW0.Iohap3Pr1UBw7Uhzgsjmthzb4w6gD9W",
         "rides": [],
         "wyniki": []
     },
     {
         "user":"user",
+        "email": "user@example.com",
         "pass":"$2a$10$Wh.IWZqupxLhSVtSaLaW0.KOyYvODof6LnwsNfOp/PPK7kISduL2a",
         "rides": [
             { "date": "2025-05-20", "time": "10:00" }

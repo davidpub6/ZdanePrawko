@@ -77,6 +77,7 @@ function Login() {
           const user = users.find(u => u.user === username && u.pass === hashedPass);
           if(user){
             localStorage.setItem("user",JSON.stringify(user));
+            localStorage.setItem("users", JSON.stringify(users));
             navigate("/jazdy");
           } else {
             setError("Wystąpił błąd");

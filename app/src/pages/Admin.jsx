@@ -29,18 +29,17 @@ const Admin = () => {
   }, []);
 
   const handleDeleteUser = (userId) => {
-    const updatedUsers = users.filter((user) => user.id !== userId);
+    const updatedUsers = users.filter((user, userIndex) => userIndex !== userId);
     setUsers(updatedUsers);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
   };
 
-  const handleEditClick = (user) => {
-    setEditUserId(user.id);
+  const handleEditClick = (user, userIndex) => {
+    setEditUserId(userIndex);
     setEditUserData({ ...user });
   };
 
-  const handleEditChange = (e) => {
-    const { name, value } = e.target;
+  const handleEditChange = (name, value) => {
     setEditUserData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -48,8 +47,8 @@ const Admin = () => {
   };
 
   const handleSaveEdit = () => {
-    const updatedUsers = users.map((user) =>
-      user.id === editUserId ? editUserData : user
+    const updatedUsers = users.map((user, userIndex) =>
+      userIndex === editUserId ? editUserData : user
     );
     setUsers(updatedUsers);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
@@ -78,7 +77,6 @@ const Admin = () => {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr>
-                    <th className="border px-2 py-1">ID</th>
                     <th className="border px-2 py-1">Username</th>
                     <th className="border px-2 py-1">Email</th>
                     <th className="border px-2 py-1">Actions</th>
@@ -92,45 +90,46 @@ const Admin = () => {
                       </td>
                     </tr>
                   )}
-                  {users.map((user) => (
-                    <tr key={user.id} className="border-t">
-                      <td className="border px-2 py-1">{user.id}</td>
+                  {users.map((user, userIndex) => (
+                    <tr key={userIndex} className="border-t">
                       <td className="border px-2 py-1">
-                        {editUserId === user.id ? (
-                          <input
-                            type="text"
-                            name="user"
-                            value={editUserData.user || ' '}
-                            onChange={handleEditChange}
-                            className="w-full p-1 border rounded"
-                          />
-                        ) : (
-                          user.user
-                        )}
+{editUserId === userIndex ? (
+  <input
+    type="text"
+    name={"user" + userIndex}
+    value={editUserData.user || ' '}
+    onChange={(e) => {handleEditChange('user', e.target.value)}}
+    className="w-full p-1 border rounded"
+  />
+) : (
+  user.user
+)}
                       </td>
                       <td className="border px-2 py-1">
-                        {editUserId === user.id ? (
-                          <input
-                            type="email"
-                            name="email"
-                            value={editUserData.email || ''}
-                            onChange={handleEditChange}
-                            className="w-full p-1 border rounded"
-                          />
-                        ) : (
-                          user.email
-                        )}
+{editUserId === userIndex ? (
+  <input
+    type="email"
+    name={"email" + userIndex}
+    value={editUserData.email || ''}
+    onChange={(e) => {handleEditChange('email', e.target.value)}}
+    className="w-full p-1 border rounded"
+  />
+) : (
+  user.email
+)}
                       </td>
                       <td className="border px-2 py-1 space-x-2">
-                        {editUserId === user.id ? (
+                        {editUserId === userIndex ? (
                           <>
                             <button
+                              key="save"
                               onClick={handleSaveEdit}
                               className="bg-green-500 text-white px-2 py-1 rounded"
                             >
                               Save
                             </button>
                             <button
+                              key="cancel"
                               onClick={handleCancelEdit}
                               className="bg-gray-500 text-white px-2 py-1 rounded"
                             >
@@ -140,15 +139,15 @@ const Admin = () => {
                         ) : (
                           <>
                             <button
-                              key={user.id}
-                              onClick={() => handleEditClick(user)}
+                              key="edit"
+                              onClick={() => handleEditClick(user, userIndex)}
                               className="bg-blue-500 text-white px-2 py-1 rounded"
                             >
                               Edit
                             </button>
                             <button
-                              key={user.id}
-                              onClick={() => handleDeleteUser(user.id)}
+                              key="delete"
+                              onClick={() => handleDeleteUser(userIndex)}
                               className="bg-red-500 text-white px-2 py-1 rounded"
                             >
                               Delete
