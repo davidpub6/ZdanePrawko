@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs-react';
+import salt from '../Data/salt.json';
 import usersJson from '../Data/users.json';
 
 const Admin = () => {
   const [showUsersModal, setShowUsersModal] = useState(false);
   const [users, setUsers] = useState([]);
   const [editUserId, setEditUserId] = useState(null);
-  const [editUserData, setEditUserData] = useState({});
+  const [editUserData, setEditUserData] = useState({ password: '' });
+  const [showAddUserModal, setShowAddUserModal] = useState(false);
+  const [newUserData, setNewUserData] = useState({ user: '', email: '', password: '' });
+  const [showEditPasswordInput, setShowEditPasswordInput] = useState(false);
+  const [showAddPasswordInput, setShowAddPasswordInput] = useState(false);
   const u = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
 
@@ -36,7 +42,60 @@ const Admin = () => {
 
   const handleEditClick = (user, userIndex) => {
     setEditUserId(userIndex);
-    setEditUserData({ ...user });
+    // Set password field empty when editing user to avoid showing current password
+    // Do not change user data here, keep as is except password field empty
+    setEditUserData((prevData) => ({ ...prevData, password: '' }));
+    setShowEditPasswordInput(false);
+    // Do not update localStorage user here as user data is not changed
+  };
+
+  const handleAddUserChange = (name, value) => {
+    setNewUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleAddUserPasswordClick = () => {
+    setShowAddPasswordInput(true);
+  };
+
+  const handleEditPasswordClick = () => {
+    setShowEditPasswordInput(true);
+  };
+
+  const handleAddUserPasswordChange = (e) => {
+    setNewUserData((prevData) => ({
+      ...prevData,
+      password: e.target.value,
+    }));
+  };
+
+  const handleEditPasswordChange = (e) => {
+    setEditUserData((prevData) => ({
+      ...prevData,
+      password: e.target.value,
+    }));
+  };
+
+  const handleAddUser = () => {
+    if (!newUserData.user.trim()) {
+      alert('Username cannot be empty');
+      return;
+    }
+    if (!newUserData.email.trim() || !newUserData.email.includes('@')) {
+      alert('Please enter a valid email');
+      return;
+    }
+    // Hash password before saving
+    const hashedPassword = bcrypt.hashSync(newUserData.password, salt);
+    const userToAdd = { ...newUserData, password: hashedPassword };
+    const updatedUsers = [...users, userToAdd];
+    setUsers(updatedUsers);
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+    setNewUserData({ user: '', email: '', password: '' });
+    setShowAddUserModal(false);
+    setShowAddPasswordInput(false);
   };
 
   const handleEditChange = (name, value) => {
@@ -47,18 +106,23 @@ const Admin = () => {
   };
 
   const handleSaveEdit = () => {
+    // Hash password before saving
+    const hashedPassword = bcrypt.hashSync(editUserData.password, salt);
+    const userToSave = { ...editUserData, pass: hashedPassword };
     const updatedUsers = users.map((user, userIndex) =>
-      userIndex === editUserId ? editUserData : user
+      userIndex === editUserId ? userToSave : user
     );
     setUsers(updatedUsers);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
     setEditUserId(null);
-    setEditUserData({});
+    setEditUserData({ password: '' });
+    setShowEditPasswordInput(false);
   };
 
   const handleCancelEdit = () => {
     setEditUserId(null);
-    setEditUserData({});
+    setEditUserData({ password: '' });
+    setShowEditPasswordInput(false);
   };
 
   return (
@@ -72,13 +136,22 @@ const Admin = () => {
         {/* Modal */}
         {showUsersModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-96 max-h-[80vh] overflow-y-auto">
-              <h2 className="text-xl font-bold mb-4">Users</h2>
+            <div className="bg-white p-6 rounded-lg shadow-lg w-400 max-h-[80vh] overflow-y-auto">
+              <h2 className="text-xl font-bold mb-4 flex justify-between items-center">
+                Users
+                <button
+                  onClick={() => setShowAddUserModal(true)}
+                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                >
+                  Add User
+                </button>
+              </h2>
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr>
                     <th className="border px-2 py-1">Username</th>
                     <th className="border px-2 py-1">Email</th>
+                    <th className="border px-2 py-1">Password</th>
                     <th className="border px-2 py-1">Actions</th>
                   </tr>
                 </thead>
@@ -93,30 +166,57 @@ const Admin = () => {
                   {users.map((user, userIndex) => (
                     <tr key={userIndex} className="border-t">
                       <td className="border px-2 py-1">
-{editUserId === userIndex ? (
-  <input
-    type="text"
-    name={"user" + userIndex}
-    value={editUserData.user || ' '}
-    onChange={(e) => {handleEditChange('user', e.target.value)}}
-    className="w-full p-1 border rounded"
-  />
-) : (
-  user.user
-)}
+                        {editUserId === userIndex ? (
+                          <input
+                            type="text"
+                            name={"user" + userIndex}
+                            value={editUserData.user || ' '}
+                            onChange={(e) => {
+                              handleEditChange('user', e.target.value);
+                            }}
+                            className="w-full p-1 border rounded"
+                          />
+                        ) : (
+                          user.user
+                        )}
                       </td>
                       <td className="border px-2 py-1">
-{editUserId === userIndex ? (
-  <input
-    type="email"
-    name={"email" + userIndex}
-    value={editUserData.email || ''}
-    onChange={(e) => {handleEditChange('email', e.target.value)}}
-    className="w-full p-1 border rounded"
-  />
-) : (
-  user.email
-)}
+                        {editUserId === userIndex ? (
+                          <input
+                            type="email"
+                            name={"email" + userIndex}
+                            value={editUserData.email || ''}
+                            onChange={(e) => {
+                              handleEditChange('email', e.target.value);
+                            }}
+                            className="w-full p-1 border rounded"
+                          />
+                        ) : (
+                          user.email
+                        )}
+                      </td>
+                      <td className="border px-2 py-1">
+                        {editUserId === userIndex ? (
+                          showEditPasswordInput ? (
+                            <input
+                              type="password"
+                              name={"password" + userIndex}
+                              value={editUserData.password || ''}
+                              onChange={handleEditPasswordChange}
+                              className="w-full p-1 border rounded"
+                            />
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={handleEditPasswordClick}
+                              className="bg-purple-500 text-white px-2 py-1 rounded"
+                            >
+                              New Password
+                            </button>
+                          )
+                        ) : (
+                          '********'
+                        )}
                       </td>
                       <td className="border px-2 py-1 space-x-2">
                         {editUserId === userIndex ? (
@@ -165,6 +265,75 @@ const Admin = () => {
                   className="bg-gray-500 text-white px-4 py-2 rounded"
                 >
                   Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Add User Modal */}
+        {showAddUserModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-96 max-h-[80vh] overflow-y-auto">
+              <h2 className="text-xl font-bold mb-4">Add New User</h2>
+              <div className="mb-4">
+                <label className="block mb-1 font-semibold" htmlFor="newUserName">
+                  Username
+                </label>
+                <input
+                  id="newUserName"
+                  type="text"
+                  value={newUserData.user}
+                  onChange={(e) => handleAddUserChange('user', e.target.value)}
+                  className="w-full p-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-1 font-semibold" htmlFor="newUserEmail">
+                  Email
+                </label>
+                <input
+                  id="newUserEmail"
+                  type="email"
+                  value={newUserData.email}
+                  onChange={(e) => handleAddUserChange('email', e.target.value)}
+                  className="w-full p-2 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-1 font-semibold" htmlFor="newUserPassword">
+                  Password
+                </label>
+                {showAddPasswordInput ? (
+                  <input
+                    id="newUserPassword"
+                    type="password"
+                    value={newUserData.password}
+                    onChange={handleAddUserPasswordChange}
+                    className="w-full p-2 border rounded"
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleAddUserPasswordClick}
+                    className="bg-purple-500 text-white px-2 py-1 rounded"
+                  >
+                    New Password
+                  </button>
+                )}
+              </div>
+              <div className="flex justify-end space-x-2">
+                <button
+                  onClick={handleAddUser}
+                  className="bg-green-500 text-white px-4 py-2 rounded"
+                >
+                  Add
+                </button>
+                <button
+                  onClick={() => setShowAddUserModal(false)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded"
+                >
+                  Cancel
                 </button>
               </div>
             </div>
