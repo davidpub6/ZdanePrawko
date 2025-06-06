@@ -3,10 +3,16 @@ import { useNavigate } from "react-router-dom";
 import '../App.css';
 import bcrypt from "bcryptjs-react";
 
-import users from "../Data/users.json";
+import usersJSON from "../Data/users.json";
 import salt from "../Data/salt.json";
 
 function Login() {
+  const users = JSON.parse(localStorage.getItem("users")); // Get users from localStorage
+  // If users are not found in localStorage, set them from the JSON file
+  if(!users) {
+    localStorage.setItem("users", JSON.stringify(usersJSON));
+  }
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState(""); // Look into bcryptjs for password hashing
   const [error, setError] = useState("");

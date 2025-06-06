@@ -2,6 +2,7 @@
     {
         "user":"admin",
         "pass":"$2a$10$Wh.IWZqupxLhSVtSaLaW0.Iohap3Pr1UBw7Uhzgsjmthzb4w6gD9W",
+        "email":"admin@admin.com",
         "rides": [],
         "wyniki": []
     },
