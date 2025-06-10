@@ -41,13 +41,15 @@ const Admin = () => {
   };
 
   const handleEditClick = (user, userIndex) => {
-    setEditUserId(userIndex);
-    // Set password field empty when editing user to avoid showing current password
-    // Do not change user data here, keep as is except password field empty
-    setEditUserData((prevData) => ({ ...prevData, password: '' }));
-    setShowEditPasswordInput(false);
-    // Do not update localStorage user here as user data is not changed
-  };
+  setEditUserId(userIndex);
+  setEditUserData({
+    user: user.user,
+    email: user.email,
+    password: '', // Don't show password
+    pass: user.pass, // Keep the original hash if password isn't changed
+  });
+  setShowEditPasswordInput(false);
+};
 
   const handleAddUserChange = (name, value) => {
     setNewUserData((prevData) => ({
@@ -106,12 +108,18 @@ const Admin = () => {
   };
 
   const handleSaveEdit = () => {
-    // Hash password before saving
-    const hashedPassword = bcrypt.hashSync(editUserData.password, salt);
-    const userToSave = { ...editUserData, pass: hashedPassword };
-    const updatedUsers = users.map((user, userIndex) =>
-      userIndex === editUserId ? userToSave : user
-    );
+    let updatedUser = {
+    user: editUserData.user,
+    email: editUserData.email,
+    pass: editUserData.pass,
+    // ...other fields if needed
+  };
+  if (editUserData.password) {
+    updatedUser.pass = bcrypt.hashSync(editUserData.password, salt);
+  }
+  const updatedUsers = users.map((user, userIndex) =>
+    userIndex === editUserId ? updatedUser : user
+  );
     setUsers(updatedUsers);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
     setEditUserId(null);
@@ -170,7 +178,7 @@ const Admin = () => {
                           <input
                             type="text"
                             name={"user" + userIndex}
-                            value={editUserData.user || ' '}
+                            value={editUserData.user || ''}
                             onChange={(e) => {
                               handleEditChange('user', e.target.value);
                             }}

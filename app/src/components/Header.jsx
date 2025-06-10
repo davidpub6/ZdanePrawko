@@ -9,6 +9,21 @@ const Header = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const handleLogout = () => {
+        // Retrieve the array from localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const userL = JSON.parse(localStorage.getItem("user"));
+
+        const updatedUsers = users.map((u) => {
+            if (u.user === userL.user) {
+                return userL;
+            }
+            return u; // Keep other users unchanged
+        });
+
+        // Save the updated array back to localStorage
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+
         // Remove the current user from localStorage
         localStorage.removeItem("user");
     

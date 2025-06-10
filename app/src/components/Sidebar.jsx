@@ -13,7 +13,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="h-screen w-1/12 bg-gray-800 text-white flex flex-col p-4">
+        <div className="h-screen w-1/10 bg-gray-800 text-white flex flex-col p-4">
             <h2 className="text-xl font-bold mb-6"> ZdanePrawko </h2>
             {menuItems.map((item) => (
                 // Create a NavLink for each menu item
