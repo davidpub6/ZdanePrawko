@@ -34,6 +34,38 @@ const Admin = () => {
     }
   }, []);
 
+  const validatePass = (pass) => {
+    //const errorMesage = "Password must ";
+    let errorMesage = "Password must ";
+    const notFour = "be at least 4 characters long";
+    const noUpper = "contain 1 uppercase letter";
+    const noNumber = "contain 1 number";
+
+    const hasUpperCase = /[A-Z]/.test(pass);
+    const hasNumber = /\d/.test(pass);
+    const isLongEnough = pass.length >= 4;
+
+    if (!isLongEnough || !hasUpperCase || !hasNumber) {
+      let errorLength = 0;
+      if (!isLongEnough) { 
+        errorMesage += notFour;
+        errorLength++; // Increment error length for each condition not met
+      }
+      if (!hasUpperCase) { 
+        if (errorLength > 0) errorMesage += ",";
+        errorMesage += " "+noUpper;
+        errorLength++;
+      }
+      if (!hasNumber) { 
+        if (errorLength > 0) errorMesage += ",";
+        errorMesage += " "+noNumber;
+      }
+      alert(errorMesage);
+      return false;
+    }
+    return true;
+  }
+
   const handleDeleteUser = (userId) => {
     const updatedUsers = users.filter((user, userIndex) => userIndex !== userId);
     setUsers(updatedUsers);
@@ -85,10 +117,25 @@ const Admin = () => {
       alert('Username cannot be empty');
       return;
     }
-    if (!newUserData.email.trim() || !newUserData.email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(newUserData.email);
+    if (!isValidEmail) {
       alert('Please enter a valid email');
       return;
     }
+    if (!newUserData.password) {
+      alert('Please enter a password');
+      return; // If password validation fails, do not proceed
+    } else if (!validatePass(newUserData.password)) {
+      return; // If password validation fails, do not proceed
+    }
+    // Check if the username already exists
+    const userExists = users.find((u) => u.user === newUserData.user);
+    if (userExists) {
+      alert('User already exists. Please choose a different username.');
+      return;
+    }
+
     // Hash password before saving
     const hashedPassword = bcrypt.hashSync(newUserData.password, salt);
     const userToAdd = { ...newUserData, password: hashedPassword };
@@ -114,8 +161,26 @@ const Admin = () => {
     pass: editUserData.pass,
     // ...other fields if needed
   };
+  // Check if the username already exists
+    const userExists = users.find((u) => u.user === editUserData.user);
+    if (userExists) {
+      alert('User already exists. Please choose a different username.');
+      return;
+    }
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(newUserData.email);
+    if (!isValidEmail) {
+      alert('Please enter a valid email: example@gmail.com');
+      return;
+    }
+    
   if (editUserData.password) {
-    updatedUser.pass = bcrypt.hashSync(editUserData.password, salt);
+    if (!validatePass(editUserData.password)) {
+      return; // If password validation fails, do not proceed
+    } else {
+      updatedUser.pass = bcrypt.hashSync(editUserData.password, salt);
+    }
   }
   const updatedUsers = users.map((user, userIndex) =>
     userIndex === editUserId ? updatedUser : user
@@ -357,8 +422,10 @@ const Admin = () => {
             >
               View Users
             </li>
+            {/* 
             <li className="text-gray-600 hover:text-gray-800 cursor-pointer">Manage Content</li>
             <li className="text-gray-600 hover:text-gray-800 cursor-pointer">Settings</li>
+            */}
           </ul>
         </div>
       </div>

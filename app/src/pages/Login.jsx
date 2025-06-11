@@ -124,6 +124,15 @@ function Login() {
           // validate password
           if (validatePass(password)) {
 
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const email = prompt("Please enter your email address:");
+            // Check if the provided email is valid
+            const isValidEmail = emailRegex.test(email);
+            if (!isValidEmail) {
+              setError("Invalid email address. Please enter a valid email. Example: example@gmail.com");
+              return; // If email validation fails, exit the function
+            }
+
             // Create a new user and save it to localStorage
             const newUser = { user: username, pass: hashedPass, rides: [], wyniki: [] };
             users.push(newUser);
